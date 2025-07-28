@@ -50,22 +50,39 @@ INSERT INTO Scholarships (Student_Ref_ID, Scholarship_Amount, Scholarship_Date) 
 (203, 3000, '2022-01-25 00:00:00'),
 (204, 4000, '2021-10-15 00:00:00');
 Select * From Scholarships;
-select upper(first_name) as student_name from student;
-select distinct major from student;
-select substring(first_name,1,3) from student;
-select instr(lower(first_name),'a') from student where first_name = 'shivansh';
-select distinct major,length(major) from student;
-select replace(first_name,'a','A') from student;
-SELECT CONCAT(first_name, ' ', last_name) AS complete_name FROM student;
-select * from student order by first_name , Major desc;
-select * from student where first_name in ('prem','shivansh');
-select * from student where first_name not in ('prem', 'shivansh');
-select * from student where first_name like '%a';
-select * from student where first_name like '______a';
-select * from student where GPA between 9.00 and 9.99;
-select major, count(*) as total_count from student where major = 'CSE';
-select concat(first_name,'',last_name) as full_name from student where GPA between 8.5 and 9.5;
-select major,count(major) from student group by major order by count(major) desc;
+#1 select upper(first_name) as student_name from student;
+
+#2 select distinct major from student;
+
+#3 select substring(first_name,1,3) from student;
+
+#4 select instr(lower(first_name),'a') from student where first_name = 'shivansh';
+
+#5 select distinct major,length(major) from student;
+
+#6 select replace(first_name,'a','A') from student;
+
+#7 SELECT CONCAT(first_name, ' ', last_name) AS complete_name FROM student;
+
+#8 select * from student order by first_name , Major desc;
+
+#9 select * from student where first_name in ('prem','shivansh');
+
+#10 select * from student where first_name not in ('prem', 'shivansh');
+
+#11 select * from student where first_name like '%a';
+
+#12 select * from student where first_name like '______a';
+
+#13 select * from student where GPA between 9.00 and 9.99;
+
+#14 select major, count(*) as total_count from student where major = 'CSE';
+
+#15 select concat(first_name,'',last_name) as full_name from student where GPA between 8.5 and 9.5;
+
+#16 select major,count(major) from student group by major order by count(major) desc;
+
+#17
 SELECT
   student.first_name,
   student.last_name,
@@ -75,15 +92,23 @@ FROM
   student
 INNER JOIN
   scholarship ON student.student_id = scholarship.student_ref_id;
-  select * from student where Student_ID % 2 != 0;
-   select * from student where Student_ID % 2 = 0;
+  
+ #18 select * from student where Student_ID % 2 != 0;
+ 
+ #19  select * from student where Student_ID % 2 = 0;
+ 
+ #20
 select student.First_Name, student.Last_Name,
 scholarship.Scholarship_Amount,
 scholarship.scholarship_date from student left join
 scholarship on student.Student_ID =
 scholarship.Student_Ref_ID;
-select * from student order by GPA DESC limit 5;
-select * from student order by GPA DESC limit 4,1;
+
+#21 select * from student order by GPA DESC limit 5;
+
+#22 select * from student order by GPA DESC limit 4,1;
+
+#23
 select * 
 from student s1
 where 4 = (
@@ -91,22 +116,37 @@ where 4 = (
      from student s2
      where s2.GPA >= s1.GPA
      );
+     
+#24
 select s1.*
 from student s1, student s2
 where s1.GPA = s2.GPA
 and s1.student_id != s2.student_id;
+
+#25
 select max(GPA) from student
 where GPA not in(select max(GPA) from student);
+
+#26
 select * from student
 union all
 select * from student order by student_id;
+
+#27
 select student_id from student
 where Student_ID not in (select student_ref_id from scholarship);
+
+#28
 select * from student
 limit (select floor(count(*)/2) from student);
-select major, count(major) as all_major from student group by major;
-select * from student where Student_ID = (select max(student_id) from student);
-select * from student where Student_ID = (select min(student_id) from student);
+
+#29 select major, count(major) as all_major from student group by major;
+
+#30 select * from student where Student_ID = (select max(student_id) from student);
+
+#31 select * from student where Student_ID = (select min(student_id) from student);
+
+#32
 select *
 from (
     select *
@@ -115,9 +155,13 @@ from (
     limit 5 )
 as subquery
 order by Student_ID;
+
+#33
 select distinct GPA from student s1
 where 3 >= (select count(distinct GPA) from student s2 where s1.GPA <= s2.GPA)
 order by s1.GPA desc;
+
+#34
 select distinct GPA 
 from student s1
 where 3 >= (
@@ -126,6 +170,8 @@ from student s2
 where s1.GPA >= s2.GPA
 )
 order by s1.GPA;
+
+#35
 select distinct GPA 
 from student s1
 where 3 = (
@@ -134,24 +180,42 @@ where 3 = (
     where s1.GPA <= s2.GPA
 )
 order by s1.GPA desc;
-select major,max(GPA) as MAXGPA from student group by major;
+
+#36 select major,max(GPA) as MAXGPA from student group by major;
+
+#37
 select first_name, GPA
 from student
 where GPA = (select max(GPA) from student);
-select curdate(); -- to get the current date
-select now(); -- to get the current date and time
-create table clonetable as select * from student;
-update student set GPA = 7.5 where major = 'CSE';
-select major,avg(GPA) as average_GPA from student group by major;
-select * from student order by GPA desc limit 3;
+
+#38 select curdate(); -- to get the current date
+
+#39 select now(); -- to get the current date and time
+
+#40 create table clonetable as select * from student;
+
+#41 update student set GPA = 7.5 where major = 'CSE';
+
+#42 select major,avg(GPA) as average_GPA from student group by major;
+
+#43 select * from student order by GPA desc limit 3;
+
+#44 
 select major,count(student_id) as high_GPA_count from student
 where GPA > 7.5
 group by major;
+
+#45
 select * from student 
 where GPA = (
 select GPA from student
 where student_id = 201
 );
+
+
+   
+
+
 
 
  
